@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using Forum.ViewModels
+@model ForumViewModel
+
+<!-- List each category with the corresponding groups beneath it -->
+<ul class="list-group">
+    @foreach (var category in Model.Categories)
+    {
+        @if (category.Groups.Count > 0) // Only display categories that actually have groups
+        {
+            <li class="list-group-item">
+                <h4>Category:</h4>
+                <a asp-area="" asp-controller="Forum" asp-action="ThreadCategory" asp-route-categoryId="@category.Id"><h2>@category.Name</h2></a>
+                <h4>Groups:</h4>
+                @foreach (var group in category.Groups)
+                {
+                    <a asp-area="" asp-controller="Forum" asp-action="ThreadGroup" asp-route-categoryId="@category.Id" asp-route-groupId="@group.Id"><h3>@group.Name</h3></a>
+                }
+            </li>
+        }
+    }
+</ul>

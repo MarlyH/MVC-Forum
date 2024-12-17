@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|c:\\users\\nolra\\documents\\asp.net\\forum\\controllers\\forumcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|solutionrelative:controllers\\forumcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|c:\\users\\nolra\\documents\\asp.net\\forum\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|c:\\users\\nolra\\documents\\asp.net\\forum\\views\\forum\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|solutionrelative:views\\forum\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|c:\\users\\nolra\\documents\\asp.net\\forum\\repository\\forumrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|solutionrelative:repository\\forumrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|c:\\users\\nolra\\documents\\asp.net\\forum\\views\\forum\\threadcategory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|solutionrelative:views\\forum\\threadcategory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|c:\\users\\nolra\\documents\\asp.net\\forum\\viewmodels\\forumviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|solutionrelative:viewmodels\\forumviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|c:\\users\\nolra\\documents\\asp.net\\forum\\views\\forum\\threadgroup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|solutionrelative:views\\forum\\threadgroup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 316,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ThreadGroup.cshtml",
+              "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Views\\Forum\\ThreadGroup.cshtml",
+              "RelativeDocumentMoniker": "Views\\Forum\\ThreadGroup.cshtml",
+              "ToolTip": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Views\\Forum\\ThreadGroup.cshtml",
+              "RelativeToolTip": "Views\\Forum\\ThreadGroup.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T08:45:41.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Views\\Forum\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Forum\\Index.cshtml",
+              "ToolTip": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Views\\Forum\\Index.cshtml",
+              "RelativeToolTip": "Views\\Forum\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T07:03:09.195Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ForumController.cs",
+              "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Controllers\\ForumController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ForumController.cs",
+              "ToolTip": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Controllers\\ForumController.cs",
+              "RelativeToolTip": "Controllers\\ForumController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAAC4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T06:44:55.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAC8AAACpAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T06:36:12.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ForumViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\ViewModels\\ForumViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\ForumViewModel.cs",
+              "ToolTip": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\ViewModels\\ForumViewModel.cs",
+              "RelativeToolTip": "ViewModels\\ForumViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T06:30:38.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ThreadCategory.cshtml",
+              "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Views\\Forum\\ThreadCategory.cshtml",
+              "RelativeDocumentMoniker": "Views\\Forum\\ThreadCategory.cshtml",
+              "ToolTip": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Views\\Forum\\ThreadCategory.cshtml",
+              "RelativeToolTip": "Views\\Forum\\ThreadCategory.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T06:29:34.663Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ForumRepository.cs",
+              "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Repository\\ForumRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\ForumRepository.cs",
+              "ToolTip": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Repository\\ForumRepository.cs",
+              "RelativeToolTip": "Repository\\ForumRepository.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAA6wEYAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T02:32:39.6Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
