@@ -25,17 +25,19 @@ namespace Forum.Repository
         public async Task<bool> AddGroupAsync(ThreadGroup group)
         {
             await _context.AddAsync(group);
+            return await _context.SaveChangesAsync() > 0; 
+        }
+
+        public async Task<bool> AddReplyAsync(ThreadReply reply)
+        {
+            await _context.AddAsync(reply);
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public Task<bool> AddReplyAsync(ThreadReply reply)
+        public async Task<bool> AddThreadAsync(Models.Thread thread)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> AddThreadAsync(Models.Thread thread)
-        {
-            throw new NotImplementedException();
+            await _context.AddAsync(thread);
+            return await _context.SaveChangesAsync() > 0;
         }
 
         // Read
