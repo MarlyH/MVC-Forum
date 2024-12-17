@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|c:\\users\\nolra\\documents\\asp.net\\forum\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|c:\\users\\nolra\\documents\\asp.net\\forum\\repository\\forumrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{81438428-7D5C-414F-B86E-1063D55864E5}|Forum.csproj|solutionrelative:repository\\forumrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -46,11 +50,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 316,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-12-17T02:20:33.402Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "IForumRepository.cs",
               "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Interfaces\\IForumRepository.cs",
               "RelativeDocumentMoniker": "Interfaces\\IForumRepository.cs",
@@ -58,12 +75,11 @@
               "RelativeToolTip": "Interfaces\\IForumRepository.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABcAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T02:12:26.63Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-17T02:12:26.63Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ThreadCategory.cs",
               "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Models\\ThreadCategory.cs",
               "RelativeDocumentMoniker": "Models\\ThreadCategory.cs",
@@ -71,12 +87,11 @@
               "RelativeToolTip": "Models\\ThreadCategory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T02:10:31.838Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-17T02:10:31.838Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
@@ -84,12 +99,11 @@
               "RelativeToolTip": "Data\\ApplicationDbContext.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T02:00:28.2Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-17T02:00:28.2Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Views\\Forum\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Forum\\Index.cshtml",
@@ -97,12 +111,11 @@
               "RelativeToolTip": "Views\\Forum\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-06T07:03:09.195Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T07:03:09.195Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ForumController.cs",
               "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Controllers\\ForumController.cs",
               "RelativeDocumentMoniker": "Controllers\\ForumController.cs",
@@ -110,12 +123,11 @@
               "RelativeToolTip": "Controllers\\ForumController.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAqwC4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T06:44:55.181Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T06:44:55.181Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -127,7 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ForumViewModel.cs",
               "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\ViewModels\\ForumViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\ForumViewModel.cs",
@@ -135,12 +147,11 @@
               "RelativeToolTip": "ViewModels\\ForumViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T06:30:38.065Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T06:30:38.065Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ThreadCategory.cshtml",
               "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Views\\Forum\\ThreadCategory.cshtml",
               "RelativeDocumentMoniker": "Views\\Forum\\ThreadCategory.cshtml",
@@ -148,12 +159,11 @@
               "RelativeToolTip": "Views\\Forum\\ThreadCategory.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-06T06:29:34.663Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T06:29:34.663Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ForumRepository.cs",
               "DocumentMoniker": "C:\\Users\\nolra\\Documents\\asp.net\\Forum\\Repository\\ForumRepository.cs",
               "RelativeDocumentMoniker": "Repository\\ForumRepository.cs",
