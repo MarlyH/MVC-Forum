@@ -71,27 +71,12 @@ namespace Forum.Repository
                 .FirstOrDefaultAsync(g => g.Id == groupId);
         }
 
-        public Task<IEnumerable<ThreadGroup>> GetGroupsByCategoryIdAsync(int categoryId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<ThreadReply>> GetRepliesByThreadIdAsync(int threadId)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<ThreadReply> GetReplyByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
         public Task<Models.Thread> GetThreadByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Models.Thread>> GetThreadsByGroupIdAsync(int groupId)
         {
             throw new NotImplementedException();
         }

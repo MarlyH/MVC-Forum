@@ -219,3 +219,4 @@ C:\Users\nolra\Documents\asp.net\Forum\obj\Debug\net9.0\refint\Forum.dll
 C:\Users\nolra\Documents\asp.net\Forum\obj\Debug\net9.0\Forum.pdb
 C:\Users\nolra\Documents\asp.net\Forum\obj\Debug\net9.0\Forum.genruntimeconfig.cache
 C:\Users\nolra\Documents\asp.net\Forum\obj\Debug\net9.0\ref\Forum.dll
+C:\Users\nolra\Documents\asp.net\Forum\obj\Debug\net9.0\Forum.sourcelink.json

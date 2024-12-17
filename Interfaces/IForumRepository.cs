@@ -12,15 +12,15 @@ namespace Forum.Interfaces
         // Thread groups
         public Task<IEnumerable<ThreadGroup>> GetAllGroupsAsync();
         public Task<ThreadGroup> GetGroupByIdAsync(int id);
-        public Task<IEnumerable<ThreadGroup>> GetGroupsByCategoryIdAsync(int categoryId);
+        //public Task<IEnumerable<ThreadGroup>> GetGroupsByCategoryIdAsync(int categoryId);
 
         // Threads
         public Task<IEnumerable<Thread>> GetAllThreadsAsync();
         public Task<Thread> GetThreadByIdAsync(int id);
-        public Task<IEnumerable<Thread>> GetThreadsByGroupIdAsync(int groupId);
+        //public Task<IEnumerable<Thread>> GetThreadsByGroupIdAsync(int groupId);
 
         // Thread replies
-        public Task<IEnumerable<ThreadReply>> GetRepliesByThreadIdAsync(int threadId);
+        //public Task<IEnumerable<ThreadReply>> GetRepliesByThreadIdAsync(int threadId);
         public Task<ThreadReply> GetReplyByIdAsync(int id);
 
         // Utility
