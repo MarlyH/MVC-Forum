@@ -1,4 +1,5 @@
 ﻿using Forum.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Forum.Data
@@ -39,6 +40,41 @@ namespace Forum.Data
                 context.AddRange(groups);
 
                 context.SaveChanges();
+            }
+        }
+
+        public static async Task SeedUsersAndRoles(IApplicationBuilder applicationBuilder)
+        {
+            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            {
+                //Roles
+                var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+                if (!await roleManager.RoleExistsAsync(UserRoles.User))
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+
+                // Users
+                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<User>>();
+
+                var newAdminUser = new User()
+                {
+                    UserName = "chadmin",
+                    Email = "admin@admin.com",
+                    EmailConfirmed = true
+                };
+                await userManager.CreateAsync(newAdminUser);
+                await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+
+                var newAppUser = new User()
+                {
+                    UserName = "gwuser",
+                    Email = "gwedin@gmail.com",
+                    EmailConfirmed = true
+                };
+                await userManager.CreateAsync(newAppUser);
+                await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
             }
         }
     }

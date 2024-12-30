@@ -1,13 +1,16 @@
 using Forum.Data;
 using Forum.Interfaces;
+using Forum.Models;
 using Forum.Repository;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Forum
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -18,13 +21,19 @@ namespace Forum
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
+            builder.Services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.AddMemoryCache();
+            builder.Services.AddSession();
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             var app = builder.Build();
 
             // Seed data
             using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                SeedData.Initialize(services);
+                /*SeedData.Initialize(services);*/
+                await SeedData.SeedUsersAndRoles(app);
             }
 
             // Configure the HTTP request pipeline.
