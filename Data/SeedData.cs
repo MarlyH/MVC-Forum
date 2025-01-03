@@ -19,23 +19,23 @@ namespace Forum.Data
                 // thread categories
                 var categories = new List<ThreadCategory>
                 {
-                    new ThreadCategory { Name = "General Discussion", Description = "Random crap goes here" }, // ID = 1
-                    new ThreadCategory { Name = "Cocks", Description = "Pictures of cocks go here" }, // 2
-                    new ThreadCategory { Name = "Genshin Discussion", Description = "GenSHIT SHITpact"} // 3
+                    new ThreadCategory { Name = "Category 1", Description = "Cat 1 desc" }, 
+                    new ThreadCategory { Name = "Category 2", Description = "Cat 2 desc" }, 
+                    new ThreadCategory { Name = "Category 3", Description = "Cat 3 desc"} 
                 };
                 context.AddRange(categories);
 
                 // thread groups
                 var groups = new List<ThreadGroup>
                 {
-                    new ThreadGroup { Name = "religion", Description = "Bismallah", CategoryId = 1 },
-                    new ThreadGroup { Name = "fitness", Description = "huge men", CategoryId = 1 },
+                    new ThreadGroup { Name = "Group 1", Description = "Group 1 desc", CategoryId = 1 },
+                    new ThreadGroup { Name = "Group 2", Description = "Group 2 desc", CategoryId = 1 },
 
-                    new ThreadGroup { Name = "small cocks", Description = "yum", CategoryId = 2 },
-                    new ThreadGroup { Name = "big cocks", Description = "yum yum", CategoryId = 2 },
+                    new ThreadGroup { Name = "Group 3", Description = "Group 3 desc", CategoryId = 2 },
+                    new ThreadGroup { Name = "Group 4", Description = "Group 4 desc", CategoryId = 2 },
 
-                    new ThreadGroup { Name = "GODpitano", Description = "I FUARKING kneel", CategoryId = 3 },
-                    new ThreadGroup { Name = "FVARKA", Description = "sex with capitano", CategoryId = 3 },
+                    new ThreadGroup { Name = "Group 5", Description = "Group 5 desc", CategoryId = 3 },
+                    new ThreadGroup { Name = "Group 6", Description = "Group 6 desc", CategoryId = 3 },
                 };
                 context.AddRange(groups);
 
@@ -58,23 +58,33 @@ namespace Forum.Data
                 // Users
                 var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<User>>();
 
-                var newAdminUser = new User()
+                string appUserEmail = "admin@admin.com";
+                var existingAppUser = userManager.FindByEmailAsync(appUserEmail);
+                if (existingAppUser == null)
                 {
-                    UserName = "chadmin",
-                    Email = "admin@admin.com",
-                    EmailConfirmed = true
-                };
-                await userManager.CreateAsync(newAdminUser);
-                await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+                    var newAppUser = new User()
+                    {
+                        UserName = "user",
+                        Email = "user@user.com",
+                        EmailConfirmed = true
+                    };
+                    await userManager.CreateAsync(newAppUser, "User@1234?");
+                    await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
+                }
 
-                var newAppUser = new User()
+                string adminEmail = "admin@admin.com";
+                var existingAdmin = userManager.FindByEmailAsync(adminEmail);
+                if (existingAdmin == null)
                 {
-                    UserName = "gwuser",
-                    Email = "gwedin@gmail.com",
-                    EmailConfirmed = true
-                };
-                await userManager.CreateAsync(newAppUser);
-                await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
+                    var newAdminUser = new User()
+                    {
+                        UserName = "admin",
+                        Email = "admin@admin.com",
+                        EmailConfirmed = true
+                    };
+                    await userManager.CreateAsync(newAdminUser, "Admin@1234?");
+                    await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+                }
             }
         }
     }
