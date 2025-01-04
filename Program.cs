@@ -25,7 +25,12 @@ namespace Forum
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddMemoryCache();
             builder.Services.AddSession();
-            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LoginPath = "/Account/Login"; // redirect for unauthenticated users
+                options.AccessDeniedPath = "/Account/AccessDenied"; // redirect for unauthorised users
+            });
+
             var app = builder.Build();
 
             // Seed data
@@ -46,7 +51,7 @@ namespace Forum
 
             app.UseHttpsRedirection();
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapStaticAssets();
@@ -65,6 +70,11 @@ namespace Forum
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}")
                 .WithStaticAssets();
+
+            app.MapControllerRoute(
+                name: "dashboard",
+                pattern: "dashboard/{action=Index}/{id?}",
+                defaults: new { controller = "Dashboard" });
             app.Run();
         }
     }
