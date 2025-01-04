@@ -2,6 +2,7 @@
 using Forum.Interfaces;
 using Forum.Models;
 using Forum.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -52,12 +53,23 @@ namespace Forum.Controllers
             };
             return View(forumVM);
         }
-
-        [HttpPost]
-        public async Task<IActionResult> CreateCategory(ThreadCategory category)
+        [Authorize]
+        public async Task<IActionResult> CreateThread(int groupId=1)
         {
-            await _forumRepository.AddCategoryAsync(category);
-            return RedirectToAction("Index");
+            var group = await _forumRepository.GetGroupByIdAsync(groupId);
+
+            // ensure the group actually exists
+            if (group == null)
+            {
+                return NotFound();
+            }
+
+            var forumVM = new ForumViewModel
+            {
+                Group = group,
+                Groups = await _forumRepository.GetAllGroupsAsync(),
+            };
+            return View(forumVM);
         }
     }
 }

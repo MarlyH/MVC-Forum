@@ -57,6 +57,11 @@ namespace Forum
             app.MapStaticAssets();
 
             app.MapControllerRoute(
+                name: "forumCreateThread",
+                pattern: "forum/createthread",
+                defaults: new { controller = "Forum", action = "CreateThread" });
+
+            app.MapControllerRoute(
                 name: "forumCategory", 
                 pattern: "forum/{categoryId}",
                 defaults: new { controller = "Forum", action = "ThreadCategory" }); // TODO: change routing to use names instead of IDs. Threads should still use IDs tho

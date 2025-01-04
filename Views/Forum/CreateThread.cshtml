@@ -1,0 +1,14 @@
+﻿@{
+}
+@using Forum.ViewModels
+@model ForumViewModel
+
+<h1>thread's passed group is @Model.Group.Name</h1>
+
+<p>TODO: select a group with the passed group in the VM being the default</p>
+<ul>
+    @foreach (var group in Model.Groups)
+    {
+        <li>@group.Name</li>
+    }
+</ul>

@@ -9,3 +9,7 @@
 <h1>@Model.Group.Name</h1>
 
 <p>The group's category is @Model.Group.Category.Name</p>
+
+<div> <!-- groupId is passed as a query param -->
+    <a asp-area="" asp-controller="Forum" asp-action="CreateThread" asp-route-groupId="@Model.Group.Id">Create New Thread</a>
+</div>
