@@ -62,6 +62,11 @@ namespace Forum
                 defaults: new { controller = "Forum", action = "CreateThread" });
 
             app.MapControllerRoute(
+                name: "forumViewThread",
+                pattern: "forum/viewthread/{threadId}",
+                defaults: new { controller = "Forum", action = "ViewThread" });
+
+            app.MapControllerRoute(
                 name: "forumCategory", 
                 pattern: "forum/{categoryId}",
                 defaults: new { controller = "Forum", action = "ThreadCategory" }); // TODO: change routing to use names instead of IDs. Threads should still use IDs tho

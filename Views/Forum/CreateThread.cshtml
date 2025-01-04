@@ -1,14 +1,54 @@
 ﻿@{
+    ViewData["Title"] = "Create a Forum Post";
 }
 @using Forum.ViewModels
-@model ForumViewModel
+@model CreateThreadViewModel
 
-<h1>thread's passed group is @Model.Group.Name</h1>
+<h2>Create a New Forum Post</h2>
 
-<p>TODO: select a group with the passed group in the VM being the default</p>
-<ul>
-    @foreach (var group in Model.Groups)
-    {
-        <li>@group.Name</li>
-    }
-</ul>
+<div class="card shadow-sm mt-4">
+    <div class="card-body">
+        <form asp-controller="Forum" asp-action="CreateThread" method="post">
+            <!-- Thread group input -->
+            <div class="form-group mb-3">
+                <label class="form-label" asp-for="Thread.GroupId">Post category: </label>
+                <select class="form-select" asp-for="Thread.GroupId">
+                    @foreach (var group in Model.Groups)
+                    {
+                        if (group.Id == Model.PassedGroupId)
+                        {
+                            <option selected value="@group.Id">@group.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@group.Id">@group.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <!-- Title input -->
+            <div class="form-group mb-3">
+                <label class="form-label" asp-for="Thread.Title">Title: </label>
+                <input class="form-control" asp-for="Thread.Title" />
+                <span asp-validation-for="Thread.Title" class="text-danger"></span>
+            </div>
+
+            <!-- Content input -->
+            <div class="form-group mb-3">
+                <label class="form-label" asp-for="Thread.Content">Content: </label>
+                <textarea class="form-control" asp-for="Thread.Content" rows="8" placeholder="Write your post content here..."></textarea>                
+                <span asp-validation-for="Thread.Content" class="text-danger"></span>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end">
+                <!-- Cancel -->
+                <a asp-action="Index" asp-controller="Forum" class="btn btn-secondary me-2">Cancel</a>
+
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary">Create post</button>
+            </div>
+        </form>
+    </div>
+</div>
