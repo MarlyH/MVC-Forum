@@ -16,6 +16,9 @@ namespace Forum.Models
         [ForeignKey("Author")] // the user who created the thread
         public string? AuthorId { get; set; } // nullable in case the user is deleted. 
         public User? Author { get; set; }
+        [ForeignKey("Group")]
+        public int GroupId { get; set; }
+        public ThreadGroup Group { get; set; }
         public ICollection<ThreadReply> Replies { get; set; }
     }
 }
