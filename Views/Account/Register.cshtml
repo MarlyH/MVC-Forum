@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+@using Forum.ViewModels
+@model RegisterViewModel
+
+<div class="row">
+    <div class="col-6 offset-3">
+        @if (TempData["Error"] != null) // show error message if exists
+        {
+            <div class="col-md-12 alert alert-danger">
+                <span>@TempData["Error"]</span>
+            </div>
+        }
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <!-- Email input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="EmailAddress" class="form-label" for="registerEmail">Email address</label>
+                <input asp-for="EmailAddress" type="email" id="registerEmail" class="form-control" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            </div>
+
+            <!-- Password input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="Password" class="form-label" for="registerPassword">Password</label>
+                <input asp-for="Password" type="password" id="registerPassword" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <!-- Confirm password input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="ConfirmPassword" class="form-label" for="registerConfirmPassword">Password</label>
+                <input asp-for="ConfirmPassword" type="password" id="registerConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Register</button>
+        </form>
+    </div>
+</div>

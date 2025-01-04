@@ -67,5 +67,50 @@ namespace Forum.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult Register()
+        {
+            // redirect if already logged in
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var response = new RegisterViewModel();
+            return View(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel registerVM)
+        {
+            if (!ModelState.IsValid) return View(registerVM);
+
+            var user = await _userManager.FindByEmailAsync(registerVM.EmailAddress);
+
+            if (user != null)
+            {
+                TempData["Error"] = "Email address is already in use";
+                return View(registerVM);
+            }
+
+            var newUser = new User()
+            {
+                Email = registerVM.EmailAddress,
+                UserName = registerVM.EmailAddress, // TODO
+            };
+            var response = await _userManager.CreateAsync(newUser, registerVM.Password);
+
+            if (response.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+            }
+            else
+            {
+                TempData["Error"] = "Password does not meet the complexity requirements."; // TODO: actually tell the user what these are.
+                return View(registerVM);
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
