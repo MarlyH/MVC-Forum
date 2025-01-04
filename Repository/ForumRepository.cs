@@ -78,9 +78,12 @@ namespace Forum.Repository
             throw new NotImplementedException();
         }
 
-        public Task<Models.Thread> GetThreadByIdAsync(int id)
+        public async Task<Models.Thread> GetThreadByIdAsync(int id) 
         {
-            throw new NotImplementedException();
+            return await _context.Threads
+                .Include(t => t.Replies)
+                .Include(t => t.Group)
+                .FirstOrDefaultAsync(t =>  t.Id == id);
         }
     }
 }
