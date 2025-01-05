@@ -57,34 +57,19 @@ namespace Forum
             app.MapStaticAssets();
 
             app.MapControllerRoute(
-                name: "forumCreateThread",
-                pattern: "forum/createthread",
-                defaults: new { controller = "Forum", action = "CreateThread" });
-
-            app.MapControllerRoute(
-                name: "forumViewThread",
-                pattern: "forum/viewthread/{threadId}",
-                defaults: new { controller = "Forum", action = "ViewThread" });
-
-            app.MapControllerRoute(
-                name: "forumCategory", 
-                pattern: "forum/{categoryId}",
-                defaults: new { controller = "Forum", action = "ThreadCategory" }); // TODO: change routing to use names instead of IDs. Threads should still use IDs tho
-
-            app.MapControllerRoute(
-                name: "forumGroup",
-                pattern: "forum/{categoryId}/{groupId}",
-                defaults: new { controller = "Forum", action = "ThreadGroup" });
-
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
-                .WithStaticAssets();
+                name: "forum",
+                pattern: "forum/{action=Index}/{id?}",
+                defaults: new { controller = "Forum" });
 
             app.MapControllerRoute(
                 name: "dashboard",
                 pattern: "dashboard/{action=Index}/{id?}",
                 defaults: new { controller = "Dashboard" });
+
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}")
+                .WithStaticAssets();
             app.Run();
         }
     }

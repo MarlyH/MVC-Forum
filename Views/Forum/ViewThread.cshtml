@@ -1,7 +1,9 @@
-﻿@using Forum.Models
-@model Thread
+﻿@using Forum.ViewModels
+@model ViewThreadViewModel
 @{
-    ViewData["Title"] = Model.Title;
+    var thread = Model.Thread;
+    var newReply = Model.NewReply;
+    ViewData["Title"] = thread.Title;
 }
 
 <h2>Forum Thread</h2>
@@ -10,25 +12,34 @@
     <!-- Thread Details -->
     <div class="card shadow-sm mb-4">
         <div class="card-header bg-primary text-white">
-            <h5 class="mb-0">@Model.Title</h5>
+            <h5 class="mb-0">@thread.Title</h5>
             <small class="text-light">
-                Category: @Model.Group.Name | 
-                Posted by: @Model.Author?.UserName 
-                on @Model.DateCreated.ToString("MMMM dd, yyyy") 
-                at @Model.DateCreated.ToString("hh:mm tt")
+                Category: @thread.Group.Name |
+                Posted by: @thread.Author?.UserName
+                on @thread.DateCreated.ToString("MMMM dd, yyyy")
+                at @thread.DateCreated.ToString("hh:mmtt")
             </small>
+            @if (thread.DateLastEdited != null)
+            {
+                <div>
+                    <small class="text-light">
+                        Last edited on @thread.DateCreated.ToString("MMMM dd, yyyy")
+                        at @thread.DateCreated.ToString("hh:mmtt")
+                    </small>
+                </div>
+            }
         </div>
         <div class="card-body">
-            <p>@Model.Content</p>
+            <p>@thread.Content</p>
         </div>
     </div>
 
     <!-- Replies Section -->
     <h4>Replies</h4>
-    @if (Model.Replies != null && Model.Replies.Any())
+    @if (thread.Replies != null && thread.Replies.Any())
     {
         <div class="list-group mb-4">
-            @foreach (var reply in Model.Replies)
+            @foreach (var reply in thread.Replies)
             {
                 <div class="list-group-item">
                     <div class="d-flex justify-content-between">
@@ -51,10 +62,10 @@
             <h5 class="mb-0">Add a Reply</h5>
         </div>
         <div class="card-body">
-            <form asp-action="AddReply" asp-controller="Forum" method="post">
+            <form asp-controller="Forum" asp-action="AddReply" method="post">
                 <div class="form-group mb-3">
-                    <label class="form-label">Your Reply</label>
-                    <textarea class="form-control" rows="5" placeholder="Write your reply here..."></textarea>
+                    <label class="form-label" asp-for="NewReply.Content">Your Reply</label>
+                    <textarea class="form-control" asp-for="NewReply.Content" rows="5" placeholder="Write your reply here..."></textarea>
                 </div>
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">Post Reply</button>

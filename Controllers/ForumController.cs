@@ -99,7 +99,19 @@ namespace Forum.Controllers
 
             if (thread == null) return NotFound();
 
-            return View(thread);
+            var viewThreadVM = new ViewThreadViewModel()
+            {
+                Thread = thread,
+            };
+
+            return View(viewThreadVM);
+        }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddReply(ViewThreadViewModel viewThreadVM)
+        {
+            var newReply = viewThreadVM.NewReply;
+            return RedirectToAction("Index", "Forum");
         }
     }
 }
