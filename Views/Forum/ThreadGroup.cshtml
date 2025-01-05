@@ -10,6 +10,16 @@
 
 <p>The group's category is @Model.Group.Category.Name</p>
 
+<h3>List of threads:</h3>
+<ul>
+    @foreach (var thread in Model.Group.Threads)
+    {
+        <li>
+            <a asp-controller="Forum" asp-action="ViewThread" asp-route-threadId="@thread.Id">@thread.Title</a>
+        </li>
+    }
+</ul>
+
 <div> <!-- groupId is passed as a query param -->
     <a asp-area="" asp-controller="Forum" asp-action="CreateThread" asp-route-groupId="@Model.Group.Id">Create New Thread</a>
 </div>

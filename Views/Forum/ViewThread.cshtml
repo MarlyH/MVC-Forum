@@ -4,5 +4,62 @@
     ViewData["Title"] = Model.Title;
 }
 
-<h1>@Model.Title</h1>
-<p>@Model.Content</p>
+<h2>Forum Thread</h2>
+
+<div class="container mt-4">
+    <!-- Thread Details -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">@Model.Title</h5>
+            <small class="text-light">
+                Category: @Model.Group.Name | 
+                Posted by: @Model.Author?.UserName 
+                on @Model.DateCreated.ToString("MMMM dd, yyyy") 
+                at @Model.DateCreated.ToString("hh:mm tt")
+            </small>
+        </div>
+        <div class="card-body">
+            <p>@Model.Content</p>
+        </div>
+    </div>
+
+    <!-- Replies Section -->
+    <h4>Replies</h4>
+    @if (Model.Replies != null && Model.Replies.Any())
+    {
+        <div class="list-group mb-4">
+            @foreach (var reply in Model.Replies)
+            {
+                <div class="list-group-item">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="mb-1">@reply.Author?.UserName</h6>
+                        <small>@reply.DateCreated.ToString("MMMM dd, yyyy HH:mm")</small>
+                    </div>
+                    <p class="mb-1">@reply.Content</p>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">No replies yet. Be the first to reply!</div>
+    }
+
+    <!-- Reply Form -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-light">
+            <h5 class="mb-0">Add a Reply</h5>
+        </div>
+        <div class="card-body">
+            <form asp-action="AddReply" asp-controller="Forum" method="post">
+                <div class="form-group mb-3">
+                    <label class="form-label">Your Reply</label>
+                    <textarea class="form-control" rows="5" placeholder="Write your reply here..."></textarea>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">Post Reply</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

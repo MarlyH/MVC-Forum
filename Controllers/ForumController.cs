@@ -45,7 +45,6 @@ namespace Forum.Controllers
         {
             var group = await _forumRepository.GetGroupByIdAsync(groupId);
 
-            // ensure the group actually exists under the specified category
             if (group == null || group.CategoryId != categoryId)
             {
                 return NotFound();
@@ -76,8 +75,10 @@ namespace Forum.Controllers
         [Authorize]
         public async Task<IActionResult> CreateThread(CreateThreadViewModel createThreadVM)
         {
+            // we get the content-related values from the form but we still need to build out the rest of the Thread object
             // get the actual Group object based on the provided GroupId
             var group = await _forumRepository.GetGroupByIdAsync(createThreadVM.Thread.GroupId);
+            // get the signed-in user (the thread author)
             var user = await _userManager.GetUserAsync(User);
 
             if (user == null || group == null) return NotFound();
@@ -85,6 +86,7 @@ namespace Forum.Controllers
             createThreadVM.Thread.AuthorId = user.Id;
             createThreadVM.Thread.Author = user;
             createThreadVM.Thread.Group = group;
+            createThreadVM.Thread.DateCreated = DateTime.Now;
 
             await _forumRepository.AddThreadAsync(createThreadVM.Thread);
 

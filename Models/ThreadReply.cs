@@ -8,7 +8,13 @@ namespace Forum.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Message { get; set; }
+        [StringLength(5000)]
+        public string Content { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime DateCreated { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? DateLastEdited { get; set; }
         [ForeignKey("Thread")] // the thread associated with the reply
         public int ThreadId { get; set; }
         public Thread Thread { get; set; }

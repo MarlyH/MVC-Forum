@@ -83,6 +83,7 @@ namespace Forum.Repository
             return await _context.Threads
                 .Include(t => t.Replies)
                 .Include(t => t.Group)
+                .Include(t => t.Author)
                 .FirstOrDefaultAsync(t =>  t.Id == id);
         }
     }
