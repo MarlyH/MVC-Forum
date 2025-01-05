@@ -5,7 +5,8 @@ namespace Forum.ViewModels
 {
     public class ViewThreadViewModel
     {
-        public Thread Thread { get; set; }
-        public ThreadReply NewReply { get; set; }
+        public Thread? Thread { get; set; }
+        public string ReplyContent { get; set; }
+        public int ThreadId { get; set; }
     }
 }

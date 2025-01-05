@@ -110,8 +110,26 @@ namespace Forum.Controllers
         [Authorize]
         public async Task<IActionResult> AddReply(ViewThreadViewModel viewThreadVM)
         {
-            var newReply = viewThreadVM.NewReply;
-            return RedirectToAction("Index", "Forum");
+            if (!ModelState.IsValid) return View("viewThread", viewThreadVM);
+
+            var thread = await _forumRepository.GetThreadByIdAsync(viewThreadVM.ThreadId);
+            var author = await _userManager.GetUserAsync(User);
+
+            if (author == null || thread == null ) return NotFound();
+
+            var newReply = new ThreadReply()
+            {
+                Content = viewThreadVM.ReplyContent,
+                DateCreated = DateTime.Now,
+                Thread = thread,
+                ThreadId = thread.Id,
+                Author = author,
+                AuthorId = author.Id,
+            };  
+
+            await _forumRepository.AddReplyAsync(newReply);
+
+            return RedirectToAction("ViewThread", "Forum", new { threadId = newReply.ThreadId });
         }
     }
 }

@@ -24,6 +24,6 @@ namespace Forum.Models
         [ForeignKey("Group")]
         public int GroupId { get; set; }
         public ThreadGroup Group { get; set; }
-        public ICollection<ThreadReply> Replies { get; set; }
+        public ICollection<ThreadReply>? Replies { get; set; }
     }
 }

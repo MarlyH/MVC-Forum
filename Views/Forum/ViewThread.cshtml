@@ -2,7 +2,6 @@
 @model ViewThreadViewModel
 @{
     var thread = Model.Thread;
-    var newReply = Model.NewReply;
     ViewData["Title"] = thread.Title;
 }
 
@@ -63,10 +62,16 @@
         </div>
         <div class="card-body">
             <form asp-controller="Forum" asp-action="AddReply" method="post">
+                <!-- Add hidden field for ThreadId -->
+                <input type="hidden" asp-for="@Model.ThreadId" value="@thread.Id" />
+
+                <!-- Reply content -->
                 <div class="form-group mb-3">
-                    <label class="form-label" asp-for="NewReply.Content">Your Reply</label>
-                    <textarea class="form-control" asp-for="NewReply.Content" rows="5" placeholder="Write your reply here..."></textarea>
+                    <label class="form-label" asp-for="@Model.ReplyContent">Your Reply</label>
+                    <textarea class="form-control" asp-for="@Model.ReplyContent" rows="5" placeholder="Write your reply here..."></textarea>
                 </div>
+
+                <!-- Submit button -->
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">Post Reply</button>
                 </div>

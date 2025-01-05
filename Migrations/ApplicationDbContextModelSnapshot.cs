@@ -58,7 +58,7 @@ namespace Forum.Migrations
 
                     b.HasIndex("GroupId");
 
-                    b.ToTable("Threads");
+                    b.ToTable("Threads", (string)null);
                 });
 
             modelBuilder.Entity("Forum.Models.ThreadCategory", b =>
@@ -80,7 +80,7 @@ namespace Forum.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ThreadCategories");
+                    b.ToTable("ThreadCategories", (string)null);
                 });
 
             modelBuilder.Entity("Forum.Models.ThreadGroup", b =>
@@ -107,7 +107,7 @@ namespace Forum.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("ThreadGroups");
+                    b.ToTable("ThreadGroups", (string)null);
                 });
 
             modelBuilder.Entity("Forum.Models.ThreadReply", b =>
@@ -141,7 +141,7 @@ namespace Forum.Migrations
 
                     b.HasIndex("ThreadId");
 
-                    b.ToTable("ThreadReplies");
+                    b.ToTable("ThreadReplies", (string)null);
                 });
 
             modelBuilder.Entity("Forum.Models.User", b =>
