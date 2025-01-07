@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Thread = Forum.Models.Thread;
 
 namespace Forum.Controllers
 {
@@ -96,12 +97,15 @@ namespace Forum.Controllers
         public async Task<IActionResult> ViewThread(int threadId)
         {
             var thread = await _forumRepository.GetThreadByIdAsync(threadId);
+            var user = await _userManager.GetUserAsync(User);
 
             if (thread == null) return NotFound();
 
             var viewThreadVM = new ViewThreadViewModel()
             {
                 Thread = thread,
+                SignedInUserId = user?.Id 
+                
             };
 
             return View(viewThreadVM);
@@ -130,6 +134,42 @@ namespace Forum.Controllers
             await _forumRepository.AddReplyAsync(newReply);
 
             return RedirectToAction("ViewThread", "Forum", new { threadId = newReply.ThreadId });
+        }
+        [Authorize]
+        public async Task<IActionResult> EditThread(int threadId) 
+        {
+            var thread = await _forumRepository.GetThreadByIdAsync(threadId);
+            var editThreadVM = new EditThreadViewModel()
+            {
+                Thread = thread,
+                Content = thread.Content,
+            };
+            return View(editThreadVM);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditThread(EditThreadViewModel editThreadVM)
+        {
+            if (!ModelState.IsValid) return NotFound();
+
+            var author = await _userManager.FindByIdAsync(editThreadVM.AuthorId);
+            var group = await _forumRepository.GetGroupByIdAsync(editThreadVM.GroupId);
+            var thread = await _forumRepository.GetThreadByIdAsync(editThreadVM.ThreadId);
+
+            if (author == null || group == null || thread == null) return NotFound();
+
+            thread.Title = editThreadVM.Title;
+            thread.Content = editThreadVM.Content;
+            thread.DateLastEdited = DateTime.Now;
+            thread.AuthorId = editThreadVM.AuthorId;
+            thread.Author = author;
+            thread.GroupId = editThreadVM.GroupId;
+            thread.Group = group;
+
+            await _forumRepository.UpdateThreadAsync(thread);
+
+            // redirect to the now updated thread
+            return RedirectToAction("ViewThread", "Forum", new { threadId =  thread.Id });
         }
     }
 }

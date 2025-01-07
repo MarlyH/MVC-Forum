@@ -8,5 +8,6 @@ namespace Forum.ViewModels
         public Thread? Thread { get; set; }
         public string ReplyContent { get; set; }
         public int ThreadId { get; set; }
+        public string? SignedInUserId { get; set; }
     }
 }

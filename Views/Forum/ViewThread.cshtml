@@ -22,15 +22,26 @@
             {
                 <div>
                     <small class="text-light">
-                        Last edited on @thread.DateCreated.ToString("MMMM dd, yyyy")
-                        at @thread.DateCreated.ToString("hh:mmtt")
+                        Last edited on @thread.DateLastEdited?.ToString("MMMM dd, yyyy")
+                        at @thread.DateLastEdited?.ToString("hh:mmtt")
                     </small>
                 </div>
             }
         </div>
         <div class="card-body">
-            <p>@thread.Content</p>
+            <!-- Replace newlines with breaks for HTML rendering -->
+            <p>@Html.Raw(thread.Content.Replace("\n", "<br />"))</p>
         </div>
+
+        <!-- Edit Thread Button, only show if signed in user is thread author -->
+        @if (Model.Thread.AuthorId == Model.SignedInUserId)
+        {
+            <div class="card-footer text-end">
+                <a asp-controller="Forum" asp-action="EditThread" asp-route-threadId="@thread.Id" class="btn btn-warning btn-sm">
+                    Edit Thread
+                </a>
+            </div>
+        }
     </div>
 
     <!-- Replies Section -->

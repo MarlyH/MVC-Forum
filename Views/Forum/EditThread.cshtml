@@ -1,0 +1,43 @@
+﻿@using Forum.ViewModels
+@model EditThreadViewModel
+@{
+    ViewData["Title"] = "Edit Post";
+}
+
+
+<h2>Edit Post</h2>
+
+<div class="card shadow-sm mt-4">
+    <div class="card-body">
+        <form asp-controller="Forum" asp-action="EditThread" method="post">
+            <!-- Add hidden fields -->
+            <input type="hidden" asp-for="@Model.ThreadId" value="@Model.Thread.Id" />
+            <input type="hidden" asp-for="@Model.GroupId" value="@Model.Thread.GroupId" />
+            <input type="hidden" asp-for="@Model.AuthorId" value="@Model.Thread.AuthorId" />
+            <input type="hidden" asp-for="@Model.DateCreated" value="@Model.Thread.DateCreated" />
+
+            <!-- Title input -->
+            <div class="form-group mb-3">
+                <label class="form-label" asp-for="@Model.Title">Title: </label>
+                <input class="form-control" asp-for="@Model.Title" value="@Model.Thread.Title" />
+                <span asp-validation-for="@Model.Title" class="text-danger"></span>
+            </div>
+
+            <!-- Content input -->
+            <div class="form-group mb-3">
+                <label class="form-label" asp-for="@Model.Content">Content: </label>
+                <textarea class="form-control" asp-for="@Model.Content" rows="8"></textarea>
+                <span asp-validation-for="@Model.Content" class="text-danger"></span>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end">
+                <!-- Cancel -->
+                <a asp-controller="Forum" asp-action="ViewThread" asp-route-threadId="@Model.Thread.Id" class="btn btn-secondary me-2">Cancel</a>
+
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary">Submit edit</button>
+            </div>
+        </form>
+    </div>
+</div>

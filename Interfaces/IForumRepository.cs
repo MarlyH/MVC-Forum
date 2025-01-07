@@ -34,5 +34,8 @@ namespace Forum.Interfaces
         public Task<bool> AddGroupAsync(ThreadGroup group);
         public Task<bool> AddThreadAsync(Thread thread);
         public Task<bool> AddReplyAsync(ThreadReply reply);
+
+        // Edit
+        public Task<bool> UpdateThreadAsync(Thread thread);
     }
 }

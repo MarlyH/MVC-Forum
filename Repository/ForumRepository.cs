@@ -1,5 +1,6 @@
 ﻿using Forum.Data;
 using Forum.Interfaces;
+using Forum.Migrations;
 using Forum.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -85,6 +86,13 @@ namespace Forum.Repository
                 .Include(t => t.Group)
                 .Include(t => t.Author)
                 .FirstOrDefaultAsync(t =>  t.Id == id);
+        }
+
+        // Update
+        public async Task<bool> UpdateThreadAsync(Models.Thread thread)
+        {
+            _context.Update(thread);
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }
