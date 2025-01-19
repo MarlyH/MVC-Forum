@@ -4,6 +4,7 @@ using Forum.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Forum.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250119052210_AddThreadVotes")]
+    partial class AddThreadVotes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,32 +24,6 @@ namespace Forum.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Forum.Models.ReplyVote", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ReplyId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("VoteType")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ReplyId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ReplyVote");
-                });
 
             modelBuilder.Entity("Forum.Models.Thread", b =>
                 {
@@ -164,13 +141,7 @@ namespace Forum.Migrations
                     b.Property<DateTime?>("DateLastEdited")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Downvotes")
-                        .HasColumnType("int");
-
                     b.Property<int>("ThreadId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Upvotes")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -406,23 +377,6 @@ namespace Forum.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Forum.Models.ReplyVote", b =>
-                {
-                    b.HasOne("Forum.Models.ThreadReply", "Reply")
-                        .WithMany("Votes")
-                        .HasForeignKey("ReplyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Forum.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Reply");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Forum.Models.Thread", b =>
                 {
                     b.HasOne("Forum.Models.User", "Author")
@@ -553,11 +507,6 @@ namespace Forum.Migrations
             modelBuilder.Entity("Forum.Models.ThreadGroup", b =>
                 {
                     b.Navigation("Threads");
-                });
-
-            modelBuilder.Entity("Forum.Models.ThreadReply", b =>
-                {
-                    b.Navigation("Votes");
                 });
 
             modelBuilder.Entity("Forum.Models.User", b =>

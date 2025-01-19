@@ -21,5 +21,8 @@ namespace Forum.Models
         [ForeignKey("Author")] // the user who created the reply
         public string? AuthorId { get; set; } // nullable in case the user is deleted. 
         public User? Author { get; set; }
+        public int Upvotes { get; set; } = 0;
+        public int Downvotes { get; set; } = 0;
+        public ICollection<ReplyVote> Votes { get; set; }
     }
 }

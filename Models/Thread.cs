@@ -25,5 +25,8 @@ namespace Forum.Models
         public int GroupId { get; set; }
         public ThreadGroup Group { get; set; }
         public ICollection<ThreadReply>? Replies { get; set; }
+        public int Upvotes { get; set; } = 0;
+        public int Downvotes { get; set; } = 0;
+        public ICollection<ThreadVote> Votes { get; set; }
     }
 }
