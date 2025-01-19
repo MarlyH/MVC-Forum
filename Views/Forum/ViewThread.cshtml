@@ -81,12 +81,13 @@
         <div class="card-body">
             <form asp-controller="Forum" asp-action="AddReply" method="post">
                 <!-- Add hidden field for ThreadId -->
-                <input type="hidden" asp-for="@Model.ThreadId" value="@thread.Id" />
+                <input type="hidden" asp-for="ThreadId" value="@thread.Id" />
 
                 <!-- Reply content -->
                 <div class="form-group mb-3">
-                    <label class="form-label" asp-for="@Model.ReplyContent">Your Reply</label>
-                    <textarea class="form-control" asp-for="@Model.ReplyContent" rows="5" placeholder="Write your reply here..."></textarea>
+                    <label class="form-label" asp-for="ReplyContent">Your Reply</label>
+                    <textarea class="form-control" asp-for="ReplyContent" rows="5" placeholder="Write your reply here..."></textarea>
+                    <span asp-validation-for="ReplyContent" class="text-danger"></span>
                 </div>
 
                 <!-- Submit button -->

@@ -114,12 +114,13 @@ namespace Forum.Controllers
         [Authorize]
         public async Task<IActionResult> AddReply(ViewThreadViewModel viewThreadVM)
         {
-            if (!ModelState.IsValid) return View("viewThread", viewThreadVM);
-
             var thread = await _forumRepository.GetThreadByIdAsync(viewThreadVM.ThreadId);
             var author = await _userManager.GetUserAsync(User);
+            if (author == null || thread == null) return NotFound();
 
-            if (author == null || thread == null ) return NotFound();
+            viewThreadVM.Thread = thread; // do this before validation checking so we can pass the thread back if it fails
+
+            if (!ModelState.IsValid) return View("viewThread", viewThreadVM);
 
             var newReply = new ThreadReply()
             {

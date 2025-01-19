@@ -83,6 +83,7 @@ namespace Forum.Repository
         {
             return await _context.Threads
                 .Include(t => t.Replies)
+                    .ThenInclude(r => r.Author) // author of each reply
                 .Include(t => t.Group)
                 .Include(t => t.Author)
                 .FirstOrDefaultAsync(t =>  t.Id == id);
