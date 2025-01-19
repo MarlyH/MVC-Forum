@@ -13,7 +13,7 @@ namespace Forum.Data
         }
         public DbSet<ThreadCategory> ThreadCategories { get; set; }
         public DbSet<ThreadGroup> ThreadGroups { get; set; }
-        public DbSet<Models.Thread> Threads { get; set; } // avoiding ambiguity 
+        public DbSet<Models.Thread> Threads { get; set; } 
         public DbSet<ThreadReply> ThreadReplies { get; set; }
         public DbSet<User> Users { get; set; }
 

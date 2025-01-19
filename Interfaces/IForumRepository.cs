@@ -37,5 +37,11 @@ namespace Forum.Interfaces
 
         // Edit
         public Task<bool> UpdateThreadAsync(Thread thread);
+
+        // Delete
+        public Task<bool> DeleteCategoryAsync(ThreadCategory category);
+        public Task<bool> DeleteGroupAsync(ThreadGroup group);
+        public Task<bool> DeleteThreadAsync(Thread thread);
+        public Task<bool> DeleteReplyAsync(ThreadReply reply);
     }
 }

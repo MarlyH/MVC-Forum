@@ -171,5 +171,16 @@ namespace Forum.Controllers
             // redirect to the now updated thread
             return RedirectToAction("ViewThread", "Forum", new { threadId =  thread.Id });
         }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> DeleteThread(int threadId)
+        {
+            var thread = await _forumRepository.GetThreadByIdAsync(threadId);
+            if (thread == null) return NotFound();
+
+            await _forumRepository.DeleteThreadAsync(thread);
+
+            return RedirectToAction("Index", "Forum"); // TODO: should probably alert the user their action was successful
+        }
     }
 }

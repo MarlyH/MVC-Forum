@@ -94,5 +94,30 @@ namespace Forum.Repository
             _context.Update(thread);
             return await _context.SaveChangesAsync() > 0;
         }
+
+        // Delete
+        public async Task<bool> DeleteCategoryAsync(ThreadCategory category)
+        {
+            _context.Remove(category);
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> DeleteGroupAsync(ThreadGroup group)
+        {
+            _context.Remove(group);
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> DeleteReplyAsync(ThreadReply reply)
+        {
+            _context.Remove(reply);
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> DeleteThreadAsync(Models.Thread thread)
+        {
+            _context.Remove(thread);
+            return await _context.SaveChangesAsync() > 0;
+        }
     }
 }
