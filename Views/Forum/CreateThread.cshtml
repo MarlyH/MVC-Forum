@@ -11,11 +11,11 @@
         <form asp-controller="Forum" asp-action="CreateThread" method="post">
             <!-- Thread group input -->
             <div class="form-group mb-3">
-                <label class="form-label" asp-for="Thread.GroupId">Post category: </label>
-                <select class="form-select" asp-for="Thread.GroupId">
+                <label class="form-label" asp-for="GroupId">Post category: </label>
+                <select class="form-select" asp-for="GroupId">
                     @foreach (var group in Model.Groups)
                     {
-                        if (group.Id == Model.PassedGroupId)
+                        if (group.Id == Model.PassedGroupId) // select the provided group ID by default 
                         {
                             <option selected value="@group.Id">@group.Name</option>
                         }
@@ -29,16 +29,16 @@
 
             <!-- Title input -->
             <div class="form-group mb-3">
-                <label class="form-label" asp-for="Thread.Title">Title: </label>
-                <input class="form-control" asp-for="Thread.Title" />
-                <span asp-validation-for="Thread.Title" class="text-danger"></span>
+                <label class="form-label" asp-for="Title">Title: </label>
+                <input class="form-control" asp-for="Title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
 
             <!-- Content input -->
             <div class="form-group mb-3">
-                <label class="form-label" asp-for="Thread.Content">Content: </label>
-                <textarea class="form-control" asp-for="Thread.Content" rows="8" placeholder="Write your post content here..."></textarea>                
-                <span asp-validation-for="Thread.Content" class="text-danger"></span>
+                <label class="form-label" asp-for="Content">Content: </label>
+                <textarea class="form-control" asp-for="Content" rows="8" placeholder="Write your post content here..."></textarea>                
+                <span asp-validation-for="Content" class="text-danger"></span>
             </div>
 
             <!-- Buttons -->

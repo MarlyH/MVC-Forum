@@ -58,7 +58,7 @@ namespace Forum.Controllers
             return View(forumVM);
         }
         [Authorize]
-        public async Task<IActionResult> CreateThread(int groupId=1)
+        public async Task<IActionResult> CreateThread(int groupId=1) // default group value in case user manually navigates to page
         {
             var group = await _forumRepository.GetGroupByIdAsync(groupId);
 
@@ -67,7 +67,6 @@ namespace Forum.Controllers
             var registerVM = new CreateThreadViewModel
             {
                 PassedGroupId = groupId,
-                Thread = new Models.Thread(),
                 Groups = await _forumRepository.GetAllGroupsAsync()
             };
             return View(registerVM);
@@ -76,23 +75,34 @@ namespace Forum.Controllers
         [Authorize]
         public async Task<IActionResult> CreateThread(CreateThreadViewModel createThreadVM)
         {
-            // we get the content-related values from the form but we still need to build out the rest of the Thread object
-            // get the actual Group object based on the provided GroupId
-            var group = await _forumRepository.GetGroupByIdAsync(createThreadVM.Thread.GroupId);
-            // get the signed-in user (the thread author)
+            if (!ModelState.IsValid)
+            {
+                // Reload groups to ensure the view model has the necessary data for rendering the form correctly
+                createThreadVM.Groups = await _forumRepository.GetAllGroupsAsync();
+                return View(createThreadVM);
+            }
+
+            // get the group and user objects needed for building out a new Thread object
+            var group = await _forumRepository.GetGroupByIdAsync(createThreadVM.GroupId);
             var user = await _userManager.GetUserAsync(User);
 
             if (user == null || group == null) return NotFound();
 
-            createThreadVM.Thread.AuthorId = user.Id;
-            createThreadVM.Thread.Author = user;
-            createThreadVM.Thread.Group = group;
-            createThreadVM.Thread.DateCreated = DateTime.Now;
+            // build out new Thread object
+            var newThread = new Thread()
+            {
+                Title = createThreadVM.Title,
+                Content = createThreadVM.Content,
+                AuthorId = user.Id,
+                Author = user,
+                Group = group,
+                DateCreated = DateTime.Now
+            };
 
-            await _forumRepository.AddThreadAsync(createThreadVM.Thread);
+            await _forumRepository.AddThreadAsync(newThread);
 
             // redirect to view the newly-created thread
-            return RedirectToAction("ViewThread", "Forum", new { threadId = createThreadVM.Thread.Id });         
+            return RedirectToAction("ViewThread", "Forum", new { threadId = newThread.Id });         
         }
         public async Task<IActionResult> ViewThread(int threadId)
         {
@@ -118,9 +128,12 @@ namespace Forum.Controllers
             var author = await _userManager.GetUserAsync(User);
             if (author == null || thread == null) return NotFound();
 
-            viewThreadVM.Thread = thread; // do this before validation checking so we can pass the thread back if it fails
-
-            if (!ModelState.IsValid) return View("viewThread", viewThreadVM);
+            if (!ModelState.IsValid) 
+            {
+                // Reload thread to ensure the view model has the necessary data for rendering the form correctly
+                viewThreadVM.Thread = thread;
+                return View("viewThread", viewThreadVM); 
+            }
 
             var newReply = new ThreadReply()
             {
@@ -149,7 +162,7 @@ namespace Forum.Controllers
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> EditThread(EditThreadViewModel editThreadVM)
+        public async Task<IActionResult> EditThread(EditThreadViewModel editThreadVM) // TODO: site breaks when editing thread to be empty
         {
             if (!ModelState.IsValid) return NotFound();
 

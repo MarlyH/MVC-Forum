@@ -7,13 +7,13 @@ namespace Forum.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Post title must not be empty")]
         [StringLength(50)]
         public string Title { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Post body must not be empty")]
         [StringLength(5000)]
         public string Content { get; set; }
-        [Required]
+        [Required()]
         [DataType(DataType.Date)]
         public DateTime DateCreated { get; set; }
         [DataType(DataType.Date)]
