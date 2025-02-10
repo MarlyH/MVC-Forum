@@ -114,8 +114,7 @@ namespace Forum.Controllers
             var viewThreadVM = new ViewThreadViewModel()
             {
                 Thread = thread,
-                SignedInUserId = user?.Id 
-                
+                SignedInUserId = user?.Id                 
             };
 
             return View(viewThreadVM);
@@ -130,9 +129,10 @@ namespace Forum.Controllers
 
             if (!ModelState.IsValid) 
             {
-                // Reload thread to ensure the view model has the necessary data for rendering the form correctly
+                // Reload thread and user to ensure the view model has the necessary data for rendering the form correctly
                 viewThreadVM.Thread = thread;
-                return View("viewThread", viewThreadVM); 
+                viewThreadVM.SignedInUserId = author?.Id;
+                return View("ViewThread", viewThreadVM);
             }
 
             var newReply = new ThreadReply()
@@ -162,9 +162,14 @@ namespace Forum.Controllers
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> EditThread(EditThreadViewModel editThreadVM) // TODO: site breaks when editing thread to be empty
+        public async Task<IActionResult> EditThread(EditThreadViewModel editThreadVM)
         {
-            if (!ModelState.IsValid) return NotFound();
+            if (!ModelState.IsValid)
+            {
+                // Reload thread to ensure the view model has the necessary data for rendering the form correctly
+                editThreadVM.Thread = await _forumRepository.GetThreadByIdAsync(editThreadVM.ThreadId);
+                return View(editThreadVM);
+            }
 
             var author = await _userManager.FindByIdAsync(editThreadVM.AuthorId);
             var group = await _forumRepository.GetGroupByIdAsync(editThreadVM.GroupId);
